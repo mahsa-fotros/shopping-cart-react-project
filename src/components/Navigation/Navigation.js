@@ -14,7 +14,7 @@ const Navigation = () => {
       <nav>
         <div className="shop-logo">
           <img src={logo} alt="shop cart logo" />
-          <h4>Shopcart</h4>
+          <h4>MahsaShop</h4>
         </div>
         <ul>
           {items.map((item) => {

@@ -11,6 +11,65 @@ html{
   box-sizing: border-box;
 }
 body{
-  background-color: #c4b5fd;
+  background-color: #faf5ff;
   font-size: 2rem;
+}
+.productList{
+  width: 90vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  row-gap: 4rem;
+  column-gap: 2rem;
+  margin: 0 auto;
+  padding: 5rem 0;
+  max-width: 1170px;
+}
+.product{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  background-color: #fff;
+  overflow: hidden;
+}
+.product:hover{
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.06);
+}
+.productImage img{
+  width: 100%;
+  height: 240px;
+}
+.productDesc{
+  width: 100%;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.buttonContainer{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+.btn{
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+.primary{
+  border: 1px solid #022c22;
+  color: #022c22;
+  background-color: #fff;
+}
+.btn:hover{
+  background-color: #022c22;
+  color: #fff;
 }
