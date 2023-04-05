@@ -1,13 +1,18 @@
 import * as data from "../data";
 import "../App.css";
+import { useCartActions } from "../Context/CartProvider";
 
 const HomePage = () => {
+ const dispatch = useCartActions();
+  const addProductHandler=(product)=>{
+    dispatch({type:"ADD_TO_CART",payload:product});
+  }
   return (
     <main>
       <section className="productList">
         {data.products.map((product) => {
           return (
-            <section className="product">
+            <section className="product" key={product.id}>
               <div className="productImage">
                 <img src={product.image} alt={product.name} />
               </div>
@@ -18,7 +23,7 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="buttonContainer">
-                <button className="btn primary">Add to Cart</button>
+                <button onClick={()=>addProductHandler(product)} className="btn primary">Add to Cart</button>
               </div>
             </section>
           );
