@@ -1,7 +1,6 @@
 const cartReducer = (state,action) => {
     switch(action.type){
         case "ADD_TO_CART":{
-                console.log(state);
                 const updatedCart= [...state.cart];
                const index = updatedCart.findIndex(item=>item.id===action.payload.id);
                if(index<0){
