@@ -3,7 +3,7 @@ import "./cartPage.css";
 import { BiTrash, BiMinus, BiPlus } from "react-icons/bi";
 
 const CartPage = () => {
-  const { cart } = useCart();
+  const { cart, total } = useCart();
   const dispatch = useCartActions();
   if (!cart.length) {
     return (
@@ -46,7 +46,10 @@ const CartPage = () => {
             );
           })}
         </section>
-        <section className="cartSummary">Cart summary</section>
+        <section className="cartSummary">
+          <h3>Cart Summary</h3>
+          <div>${total}</div>
+        </section>
       </section>
     </main>
   );
