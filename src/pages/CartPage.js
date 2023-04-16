@@ -1,14 +1,22 @@
-import { useCart } from "../Context/CartProvider";
+import { useCart, useCartActions } from "../Context/CartProvider";
 import "./cartPage.css";
+import { BiTrash, BiMinus, BiPlus } from "react-icons/bi";
 
 const CartPage = () => {
   const { cart } = useCart();
+  const dispatch = useCartActions();
   if (!cart.length) {
     return (
-      <main>
+      <main className="emptyCart">
         <h2>Cart is empty!</h2>
       </main>
     );
+  }
+  const incrementHandler=(cartItem)=>{
+    dispatch({type:"ADD_TO_CART", payload:cartItem});
+  }
+  const decrementHandler=(cartItem)=>{
+    dispatch({ type: "DECREMENT_PRODUCT", payload:cartItem });
   }
   return (
     <main className="container">
@@ -21,11 +29,18 @@ const CartPage = () => {
                   <img src={item.image} alt={item.name} />
                 </div>
                 <h4>{item.name}</h4>
-                <div>${item.price}</div>
-                <div className="itemControl">
-                  <button>-</button>
+                <div>${item.price * item.quantity}</div>
+                <div
+                  className="itemControl"
+                >
+                  <button
+                    onClick={() => decrementHandler(item)}
+                    className={`itemControlBtn ${item.quantity === 1 && "remove"}`}
+                  >
+                    {item.quantity > 1 ? <BiMinus /> : <BiTrash />}
+                  </button>
                   <p>{item.quantity}</p>
-                  <button>+</button>
+                  <button onClick={() => incrementHandler(item)} className="itemControlBtn">{<BiPlus />}</button>
                 </div>
               </div>
             );

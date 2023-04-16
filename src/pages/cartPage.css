@@ -1,3 +1,9 @@
+:root{
+  --mainColor: #022c22;
+  --borderColor: #ddd;
+  --mainWhite: #fff;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -9,6 +15,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+.emptyCart{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .cartItemList {
   display: flex;
@@ -24,14 +36,14 @@
   justify-content: space-between;
   align-items: center;
   width: 50vw;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--mainWhite);
+  border: 1px solid var(--borderColor);
   border-radius: 10px;
   padding: 1rem 3rem;
 }
 .cartItemImage {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,29 +57,35 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 10%;
+  width: 10rem;
+  max-width: 10rem;
+  border: 1px solid var(--borderColor);
+  padding: 0.5rem 1.4rem;
+  border-radius: 10px;
 }
-.itemControl button {
+.itemControlBtn {
   cursor: pointer;
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid #022c22;
-  border-radius: 50%;
-  background-color: #fff;
-  color: #022c22;
+  border: none;
+  outline: none;
+  color: var(--mainColor);
+  background-color: var(--mainWhite);
+  font-size: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
 }
-.itemControl button:hover {
-  background-color: #022c22;
-  color: #fff;
-}
+
 .cartSummary {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 30%;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--mainWhite);
+  border: 1px solid var(--borderColor);
   border-radius: 10px;
   padding: 1rem 3rem;
   margin-left: 3rem;
+}
+.remove{
+    color: red;
+    border: none;
 }

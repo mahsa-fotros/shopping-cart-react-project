@@ -12,6 +12,20 @@ const cartReducer = (state,action) => {
                 }
                 return {...state, cart: updatedCart};
             }
+            case "DECREMENT_PRODUCT":{
+                const updatedCart= [...state.cart];
+                const itemIndex = updatedCart.findIndex(item=>item.id===action.payload.id);
+                const updatedItem = {...updatedCart[itemIndex]};
+                if(updatedItem.quantity===1){
+                    const filterdeCart=updatedCart.filter(item=>item.id!==action.payload.id);
+                    return {...state, cart:filterdeCart};
+                }else{
+                    updatedItem.quantity--;
+                    updatedCart[itemIndex]=updatedItem;
+                    return {...state, cart: updatedCart};
+
+                }
+            }
                 
             default:
                 return state;
