@@ -7,8 +7,8 @@ import CartProvider from "./Context/CartProvider";
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <CartProvider>
+      <CartProvider>
+        <Layout>
           <Routes>
             {routes.map((route, index) => (
               <Route
@@ -18,8 +18,8 @@ function App() {
               />
             ))}
           </Routes>
-        </CartProvider>
-      </Layout>
+        </Layout>
+      </CartProvider>
     </BrowserRouter>
   );
 }
