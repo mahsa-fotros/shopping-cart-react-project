@@ -22,12 +22,22 @@ const HomePage = () => {
               </div>
               <div className="productDesc">
                 <div>{product.name}</div>
-                <div>
-                  <p>${product.price}</p>
+                <div className="productPrice">
+                  <p>${product.offPrice}</p>
+                  <p className="originalPrice">
+                    {product.discount > 0 ? <>List: ${product.price}</> : ""}
+                  </p>
                 </div>
               </div>
               <div className="buttonContainer">
-                <button onClick={()=>addProductHandler(product)} className={`btn primary ${checkInCart(cart,product) && "secondary"}`}>{checkInCart(cart,product) ? "In Cart" : "Add to Cart"}</button>
+                <button
+                  onClick={() => addProductHandler(product)}
+                  className={`btn primary ${
+                    checkInCart(cart, product) && "secondary"
+                  }`}
+                >
+                  {checkInCart(cart, product) ? "In Cart" : "Add to Cart"}
+                </button>
               </div>
             </section>
           );

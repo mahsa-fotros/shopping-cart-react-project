@@ -70,6 +70,10 @@
   height: 1.8rem;
 }
 
+.remove{
+    color: red;
+    border: none;
+}
 .cartSummary {
   display: flex;
   flex-direction: column;
@@ -83,7 +87,12 @@
   padding: 1rem 3rem;
   margin-left: 3rem;
 }
-.remove{
-    color: red;
-    border: none;
+.cartSummary .summaryItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.summaryItem.subtotal{
+  border-top: 1px solid var(--borderColor);
+  padding-top: 1rem;
 }

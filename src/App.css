@@ -32,7 +32,7 @@ body{
 .product{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   border: 1px solid var(--borderColor);
   border-radius: 20px;
@@ -48,11 +48,22 @@ body{
   height: 240px;
 }
 .productDesc{
-  width: 100%;
-  padding: 2rem 1rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  row-gap: 1.3rem;
+  width: 100%;
+}
+.productPrice{
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
+  column-gap: 3rem;
+}
+.productPrice .originalPrice{
+  font-size: 1.7rem;
+  color: gray;
+  text-decoration: line-through;
 }
 .buttonContainer{
   width: 100%;

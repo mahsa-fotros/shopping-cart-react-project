@@ -29,7 +29,7 @@ const CartPage = () => {
                   <img src={item.image} alt={item.name} />
                 </div>
                 <h4>{item.name}</h4>
-                <div>${item.price * item.quantity}</div>
+                <div>${item.offPrice * item.quantity}</div>
                 <div
                   className="itemControl"
                 >
@@ -46,13 +46,33 @@ const CartPage = () => {
             );
           })}
         </section>
-        <section className="cartSummary">
-          <h3>Cart Summary</h3>
-          <div>${total}</div>
-        </section>
+        <CartSummary cart={cart} total={total} />
       </section>
     </main>
   );
 };
 
 export default CartPage;
+
+const CartSummary = ({cart, total})=>{
+  const originalTotalPrice= cart.length ? cart.reduce((acc,curr)=>acc+curr.quantity*curr.price,0) : 0;
+  return (
+    <section className="cartSummary">
+      <h4>Cart Summary</h4>
+      <div className="summaryItem">
+        <p>original total price</p>
+        <p>${originalTotalPrice}</p>
+      </div>
+      <div className="summaryItem">
+        <p>discount</p>
+        <p>${originalTotalPrice - total}</p>
+      </div>
+      <div className="summaryItem subtotal">
+        <p>
+          Subtotal ({cart.reduce((acc, curr) => acc + curr.quantity, 0)} items)
+        </p>
+        <p>${total}</p>
+      </div>
+    </section>
+  );
+}

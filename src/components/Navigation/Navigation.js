@@ -29,7 +29,7 @@ const Navigation = () => {
             >
               {<BsCart />}
             </NavLink>
-            <span className="cartLength">{cart.length}</span>
+            <span className="cartLength">{cart.reduce((acc,curr)=>acc+curr.quantity,0)}</span>
           </li>
         </ul>
       </nav>
