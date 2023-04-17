@@ -1,8 +1,4 @@
-:root{
-  --mainColor: #022c22;
-  --borderColor: #ddd;
-  --mainWhite: #fff;
-}
+
 
 .container {
   display: flex;

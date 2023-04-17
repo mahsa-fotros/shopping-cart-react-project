@@ -10,6 +10,11 @@ html{
   list-style: none;
   box-sizing: border-box;
 }
+:root{
+  --mainColor: #022c22;
+  --borderColor: #ddd;
+  --mainWhite: #fff;
+}
 body{
   background-color: #f7fee7;
   font-size: 2rem;
@@ -29,10 +34,10 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ddd;
+  border: 1px solid var(--borderColor);
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
-  background-color: #fff;
+  background-color: var(--mainWhite);
   overflow: hidden;
 }
 .product:hover{
@@ -65,11 +70,15 @@ body{
   transition: all 0.3s ease-in-out;
 }
 .primary{
-  border: 1px solid #022c22;
-  color: #022c22;
-  background-color: #fff;
+  border: 1px solid var(--mainColor);
+  color: var(--mainColor);
+  background-color: var(--mainWhite);
 }
 .btn:hover{
-  background-color: #022c22;
-  color: #fff;
+  background-color: var(--mainColor);
+  color: var(--mainWhite);
+}
+.secondary{
+  background-color: var(--mainColor);
+  color: var(--mainWhite);
 }

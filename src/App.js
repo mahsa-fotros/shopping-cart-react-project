@@ -3,11 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import routes from "./routes";
 import CartProvider from "./Context/CartProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <BrowserRouter>
       <CartProvider>
+        <ToastContainer />
         <Layout>
           <Routes>
             {routes.map((route, index) => (
