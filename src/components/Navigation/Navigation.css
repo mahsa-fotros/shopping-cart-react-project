@@ -3,6 +3,8 @@
     height: 7rem;
     background-color: #FFFFFF;
     padding: 1rem 4rem;
+    position: sticky;
+    top: 0;
 }
 .mainNavigation nav{
     height: 100%;
