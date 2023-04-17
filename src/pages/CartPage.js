@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart, useCartActions } from "../Context/CartProvider";
 import "./cartPage.css";
 import { BiTrash, BiMinus, BiPlus } from "react-icons/bi";
@@ -73,6 +74,9 @@ const CartSummary = ({cart, total})=>{
         </p>
         <p>${total}</p>
       </div>
+      <Link to="/checkout">
+      <button className="btn secondary" style={{width:"100%"}}>Proceed to checkout</button>
+      </Link>
     </section>
   );
 }
