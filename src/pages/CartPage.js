@@ -47,8 +47,8 @@ const CartPage = () => {
             );
           })}
         </section>
-        <CartSummary cart={cart} total={total} />
       </section>
+        <CartSummary cart={cart} total={total} />
     </main>
   );
 };

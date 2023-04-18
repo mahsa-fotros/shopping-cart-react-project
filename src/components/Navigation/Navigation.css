@@ -9,7 +9,7 @@
 .mainNavigation nav{
     height: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     gap: 10rem;
 }
@@ -59,4 +59,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width:600px) {
+    .mainNavigation nav{
+        gap: 1rem;
+    }
+    .shop-logo h4{
+        display: none;
+    }
 }

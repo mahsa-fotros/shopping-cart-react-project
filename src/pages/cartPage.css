@@ -1,22 +1,23 @@
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 5rem 1rem;
 }
-.cartCenter{
-    width: 90vw;
-    max-width: 1170px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.emptyCart{
+.emptyCart {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-.emptyCart h2{
+.cartCenter {
+  max-width: 1170px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+}
+.emptyCart h2 {
   padding-top: 3rem;
 }
 .cartItemList {
@@ -25,14 +26,13 @@
   justify-content: space-around;
   align-items: center;
   row-gap: 2rem;
-  padding: 5rem 0;
   flex: 1;
 }
 .cartItem {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50vw;
   background-color: var(--mainWhite);
   border: 1px solid var(--borderColor);
   border-radius: 10px;
@@ -44,6 +44,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 .cartItemImage img {
   width: 100%;
@@ -54,8 +55,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 10rem;
-  max-width: 10rem;
+  width: 20%;
+  max-width: 20%;
   border: 1px solid var(--borderColor);
   padding: 0.5rem 1.4rem;
   border-radius: 10px;
@@ -71,9 +72,9 @@
   height: 1.8rem;
 }
 
-.remove{
-    color: red;
-    border: none;
+.remove {
+  color: red;
+  border: none;
 }
 .cartSummary {
   display: flex;
@@ -86,14 +87,49 @@
   border: 1px solid var(--borderColor);
   border-radius: 10px;
   padding: 1rem 3rem;
-  margin-left: 3rem;
 }
-.cartSummary .summaryItem{
+.cartSummary h4{
+  margin-bottom: 1rem;
+}
+.cartSummary .summaryItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.summaryItem.subtotal{
+.summaryItem.subtotal {
   border-top: 1px solid var(--borderColor);
   padding-top: 1rem;
 }
+
+@media screen and (max-width:992px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 3rem;
+  }
+  .cartCenter{
+    width: 80%;
+  }
+  .cartSummary{
+    width: 80%;
+    margin-left: 0;
+  }
+} 
+@media screen and (max-width:600px){
+  .cartItemImage{
+    display: none;
+  }
+  .cartItem{
+    padding: 0.5rem 1rem;
+  }
+  .itemControl{
+    padding: 0.3rem 0.8rem;
+    border: none;
+  }
+  .cartCenter{
+    width: 90%;
+  }
+}
+
