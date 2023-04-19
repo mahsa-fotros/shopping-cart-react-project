@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import Input from "../../common/Input";
 import * as Yup from "yup";
 import "./signup.css";
+import { Link } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -38,7 +39,7 @@ const SignupForm = () => {
       validationSchema,
       validateOnMount: true,
     });
-    console.log(formik.isValid);
+    
     return (
       <div className="signupForm">
         <h2 className="signupTitle">Create account</h2>
@@ -49,7 +50,13 @@ const SignupForm = () => {
             formik={formik}
             placeholder="First and last name"
           />
-          <Input label="Email" name="email" type="email" formik={formik} placeholder="" />
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            formik={formik}
+            placeholder=""
+          />
           <Input
             label="Password"
             name="password"
@@ -69,9 +76,12 @@ const SignupForm = () => {
             className="btn secondary"
             style={{ width: "40rem", padding: "1.2rem 0", fontWeight: "700" }}
             disabled={!formik.isValid}
-         >
-            Sign Up
+          >
+            Sign up
           </button>
+          <Link to="/login">
+            <p style={{ fontSize: "1.6rem" }}>Already sign up?</p>
+          </Link>
         </form>
       </div>
     );
