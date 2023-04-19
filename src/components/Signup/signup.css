@@ -1,0 +1,18 @@
+.signupForm{
+    border: 1px solid var(--borderColor);
+    width: 35vw;
+    margin: 0 auto;
+    margin-top: 5rem;
+    border-radius: 10px;
+    padding: 3rem 0;
+}
+form{
+    padding-top: 5rem;
+     display: flex;
+     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signupTitle{
+    text-align: center;
+}

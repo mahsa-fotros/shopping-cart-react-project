@@ -2,15 +2,18 @@ import { Link } from "react-router-dom";
 import { useCart, useCartActions } from "../Context/CartProvider";
 import "./cartPage.css";
 import { BiTrash, BiMinus, BiPlus } from "react-icons/bi";
+import Layout from "../Layout/Layout";
 
 const CartPage = () => {
   const { cart, total } = useCart();
   const dispatch = useCartActions();
   if (!cart.length) {
     return (
-      <main className="emptyCart">
-        <h2>Cart is empty!</h2>
-      </main>
+      <Layout>
+        <main className="emptyCart">
+          <h2>Cart is empty!</h2>
+        </main>
+      </Layout>
     );
   }
   const incrementHandler=(cartItem)=>{
@@ -20,36 +23,43 @@ const CartPage = () => {
     dispatch({ type: "DECREMENT_PRODUCT", payload:cartItem });
   }
   return (
-    <main className="container">
-      <section className="cartCenter">
-        <section className="cartItemList">
-          {cart.map((item) => {
-            return (
-              <div className="cartItem" key={item.id}>
-                <div className="cartItemImage">
-                  <img src={item.image} alt={item.name} />
+    <Layout>
+      <main className="container">
+        <section className="cartCenter">
+          <section className="cartItemList">
+            {cart.map((item) => {
+              return (
+                <div className="cartItem" key={item.id}>
+                  <div className="cartItemImage">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  <h4>{item.name}</h4>
+                  <div>${item.offPrice * item.quantity}</div>
+                  <div className="itemControl">
+                    <button
+                      onClick={() => decrementHandler(item)}
+                      className={`itemControlBtn ${
+                        item.quantity === 1 && "remove"
+                      }`}
+                    >
+                      {item.quantity > 1 ? <BiMinus /> : <BiTrash />}
+                    </button>
+                    <p>{item.quantity}</p>
+                    <button
+                      onClick={() => incrementHandler(item)}
+                      className="itemControlBtn"
+                    >
+                      {<BiPlus />}
+                    </button>
+                  </div>
                 </div>
-                <h4>{item.name}</h4>
-                <div>${item.offPrice * item.quantity}</div>
-                <div
-                  className="itemControl"
-                >
-                  <button
-                    onClick={() => decrementHandler(item)}
-                    className={`itemControlBtn ${item.quantity === 1 && "remove"}`}
-                  >
-                    {item.quantity > 1 ? <BiMinus /> : <BiTrash />}
-                  </button>
-                  <p>{item.quantity}</p>
-                  <button onClick={() => incrementHandler(item)} className="itemControlBtn">{<BiPlus />}</button>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </section>
         </section>
-      </section>
         <CartSummary cart={cart} total={total} />
-    </main>
+      </main>
+    </Layout>
   );
 };
 

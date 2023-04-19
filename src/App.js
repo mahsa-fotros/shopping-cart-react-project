@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "./Layout/Layout";
 import routes from "./routes";
 import CartProvider from "./Context/CartProvider";
 import { ToastContainer } from "react-toastify";
@@ -11,7 +10,6 @@ function App() {
     <BrowserRouter>
       <CartProvider>
         <ToastContainer />
-        <Layout>
           <Routes>
             {routes.map((route, index) => (
               <Route
@@ -21,7 +19,6 @@ function App() {
               />
             ))}
           </Routes>
-        </Layout>
       </CartProvider>
     </BrowserRouter>
   );

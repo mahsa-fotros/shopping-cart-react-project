@@ -82,6 +82,7 @@ body{
   border-radius: 10px;
   margin-bottom: 2rem;
   transition: all 0.3s ease-in-out;
+  font-size: 1.6rem;
 }
 .primary{
   border: 1px solid var(--mainColor);
@@ -98,4 +99,9 @@ body{
 }
 .secondary:hover{
   background-color: #1e5045;
+}
+button:disabled{
+  cursor: not-allowed;
+  background-color: #ccc;
+  color: #444;
 }

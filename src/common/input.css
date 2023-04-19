@@ -1,0 +1,31 @@
+.formControl{
+    margin-bottom: 3rem;
+}
+label{
+    font-weight: bold;
+    font-size: 1.5rem;
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"]
+{
+  width: 40rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid #b3b0b0;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+input:focus{
+  border: 2px solid #022c22;
+}
+input::placeholder{
+    font-size: 1.5rem;
+}
+.error{
+  color: red;
+  margin-top: 0.3rem;
+  font-size: 1.2rem;
+} 
