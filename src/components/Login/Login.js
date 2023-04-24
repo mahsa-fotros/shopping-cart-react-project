@@ -2,7 +2,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Input from "../../common/Input";
 import "./Login.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../../services/loginService";
+import { useState } from "react";
 
 const initialValues={
     email:"",
@@ -17,15 +19,28 @@ const validationSchema = Yup.object({
 });
 
 const LoginForm = () => {
-    const onSubmit=(values)=>{
-        console.log(values);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+    const onSubmit=async (values)=>{
+        // console.log(values);
+        try {
+          const {data}= await loginUser(values);
+          console.log(data);
+          setError(null);
+          navigate("/");
+        } catch (error) {
+          console.log(error);
+          if (error.response && error.response.data.message)
+            setError(error.response.data.message);
+        }
     }
     
     const formik=useFormik({initialValues,onSubmit, validationSchema, validateOnMount:true})
     return (
       <div className="loginForm">
         <h2 className="loginTitle">Sign in</h2>
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           <Input
             formik={formik}
             name="email"
@@ -48,9 +63,12 @@ const LoginForm = () => {
           >
             Sign in
           </button>
-            <Link to="/signup">
-            <p style={{fontSize:"1.6rem"}}>Not sign up yet?</p>
-            </Link>
+          {error && (
+            <p style={{ color: "red", marginBottom: "1rem", "fontSize":"1.4rem" }}>{error}</p>
+          )}
+          <Link to="/signup">
+            <p style={{ fontSize: "1.6rem" }}>Not sign up yet?</p>
+          </Link>
         </form>
       </div>
     );
