@@ -1,0 +1,22 @@
+###
+Get http://localhost:5000/api/product HTTP/1.1
+
+###
+POST http://localhost:5000/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email":"fotros.mahsa@gmail.com",
+    "password": "Ma!12345"
+}
+
+###
+POST http://localhost:5000/api/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "fotros.mahsa@gmail.com",
+    "password": "Ma!12345",
+    "name":"mahsa fotros",
+    "phoneNumber":"09134625567"
+}

@@ -1,8 +1,7 @@
 .signupForm{
     border: 1px solid var(--borderColor);
     width: 35vw;
-    margin: 0 auto;
-    margin-top: 5rem;
+    margin: 4rem auto;
     border-radius: 10px;
     padding: 3rem 0;
 }

@@ -3,21 +3,28 @@ import Input from "../../common/Input";
 import * as Yup from "yup";
 import "./signup.css";
 import { Link } from "react-router-dom";
+import { signupUser } from "../../services/signupService";
+import { useState } from "react";
 
 const initialValues = {
   name: "",
   email: "",
+  phoneNumber:"",
   password: "",
   reEnterPassword: "",
 };
 
-const validationSchema=Yup.object({
+const validationSchema = Yup.object({
   name: Yup.string()
     .required("Name is required")
     .min(6, "Name length is not valid"),
   email: Yup.string()
     .email("Invalid email format")
     .required("Email is required"),
+  phoneNumber: Yup.string()
+    .required("Phone Number is required")
+    .matches(/^[0-9]{11}$/, "Invalid Phone Number")
+    .nullable(),
   password: Yup.string()
     .required("Password is required")
     .matches(
@@ -30,8 +37,24 @@ const validationSchema=Yup.object({
 });
 
 const SignupForm = () => {
-    const onSubmit =(values)=>{
-        console.log(values);
+
+  const [error,setError] = useState(null);
+  const onSubmit =async (values)=>{
+    // console.log(values);
+      const {name, email,phoneNumber, password} =values;
+      const userData={
+        name,
+        email, 
+        phoneNumber,
+        password
+      };
+      try {
+        const {data}= await signupUser(userData);
+        console.log(data);
+      } catch (error) {
+        if(error.response && error.response.data.message)
+          setError(error.response.data.message);
+      }
     }
     const formik = useFormik({
       initialValues,
@@ -58,6 +81,13 @@ const SignupForm = () => {
             placeholder=""
           />
           <Input
+            label="Phone Number"
+            name="phoneNumber"
+            type="tel"
+            formik={formik}
+            placeholder=""
+          />
+          <Input
             label="Password"
             name="password"
             type="password"
@@ -79,6 +109,9 @@ const SignupForm = () => {
           >
             Sign up
           </button>
+          {error && (
+            <p style={{ color: "red", marginBottom: "1rem" }}>{error}</p>
+          )}
           <Link to="/login">
             <p style={{ fontSize: "1.6rem" }}>Already sign up?</p>
           </Link>
