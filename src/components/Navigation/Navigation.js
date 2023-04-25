@@ -3,8 +3,11 @@ import "./Navigation.css";
 import logo from "./logo.jpg";
 import { BsCart } from "react-icons/bs";
 import { useCart } from "../../Context/CartProvider";
+import { useAuth } from "../../Context/AuthProvider";
+import { FaUserAlt } from "react-icons/fa";
 
 const Navigation = () => {
+  const userData = useAuth();
   const { cart } = useCart();
   return (
     <header className="mainNavigation">
@@ -38,16 +41,22 @@ const Navigation = () => {
             </span>
           </li>
           <li>
-            <NavLink to="/login">
-              <button className="btn secondary" style={{ marginBottom: "0" }}>
-                Log in
+            <NavLink to={userData ? "/profile" : "login"}>
+              <button
+                className={`btn primary ${userData && "profile"}`}
+                style={{ marginBottom: "0" }}
+              >
+                {userData ? <FaUserAlt /> : "Log in"}
               </button>
             </NavLink>
           </li>
           <li>
             <NavLink to="/signup">
-              <button className="btn primary" style={{ marginBottom: "0" }}>
-                Sign up
+              <button
+                className={`btn secondary ${userData && "btnNotShown"}`}
+                style={{ marginBottom: "0" }}
+              >
+                {userData ? "" : "Sign up"}
               </button>
             </NavLink>
           </li>

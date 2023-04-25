@@ -22,7 +22,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: #115e59;
+    color: var(--secondaryColor);
 }
 .mainNavigation ul{
     height: 100%;
@@ -40,7 +40,7 @@
     padding: 0.5rem 1rem;
 }
 .mainNavigation .activeLink, .hoverLink:hover{
-    border: 1px solid #115e59;
+    border: 1px solid var(--secondaryColor);
     padding: 0.5rem 1rem;
     border-radius: 12px;
 }
@@ -53,7 +53,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: #115e59;
+    background-color: var(--secondaryColor);
     font-size: 1.3rem;
     color: #fff;
     position: absolute;
@@ -63,7 +63,12 @@
     justify-content: center;
     align-items: center;
 }
-
+.profile{
+    font-size: 1.8rem;
+}
+.btnNotShown{
+    display: none;
+}
 @media screen and (max-width:600px) {
     .mainNavigation nav{
         gap: 1rem;

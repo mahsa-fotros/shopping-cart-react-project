@@ -4,10 +4,12 @@ import routes from "./routes";
 import CartProvider from "./Context/CartProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AuthProvider from "./Context/AuthProvider";
 
 function App() {
   return (
     <BrowserRouter>
+    <AuthProvider>
       <CartProvider>
         <ToastContainer />
           <Routes>
@@ -20,6 +22,7 @@ function App() {
             ))}
           </Routes>
       </CartProvider>
+    </AuthProvider>
     </BrowserRouter>
   );
 }
