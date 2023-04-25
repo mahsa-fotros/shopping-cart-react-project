@@ -53,7 +53,7 @@ const SignupForm = () => {
         const {data}= await signupUser(userData);
         console.log(data);
         setError(null);
-        navigate("/login");
+        navigate("/");
       } catch (error) {
         if(error.response && error.response.data.message)
           setError(error.response.data.message);
@@ -106,7 +106,7 @@ const SignupForm = () => {
           />
           <button
             type="submit"
-            className="btn secondary"
+            className="btn third"
             style={{ width: "40rem", padding: "1.2rem 0", fontWeight: "700" }}
             disabled={!formik.isValid}
           >

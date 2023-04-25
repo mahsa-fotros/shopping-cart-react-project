@@ -12,6 +12,7 @@ html{
 }
 :root{
   --mainColor: #022c22;
+  --secondaryColor: #115e59;
   --borderColor: #ddd;
   --mainWhite: #fff;
 }
@@ -89,16 +90,21 @@ body{
   color: var(--mainColor);
   background-color: var(--mainWhite);
 }
-.btn:hover{
+.primary:hover{
   background-color: var(--mainColor);
   color: var(--mainWhite);
 }
-.secondary{
+.secondary, .third{
   background-color: var(--mainColor);
   color: var(--mainWhite);
 }
 .secondary:hover{
-  background-color: #1e5045;
+  background-color: var(--mainWhite);
+  border: 1px solid var(--mainColor);
+  color: var(--mainColor);
+}
+.third:hover{
+  background-color: var(--secondaryColor);
 }
 button:disabled{
   cursor: not-allowed;

@@ -35,7 +35,7 @@ const HomePage = () => {
                   <button
                     onClick={() => addProductHandler(product)}
                     className={`btn primary ${
-                      checkInCart(cart, product) && "secondary"
+                      checkInCart(cart, product) && "third"
                     }`}
                   >
                     {checkInCart(cart, product) ? "In Cart" : "Add to Cart"}

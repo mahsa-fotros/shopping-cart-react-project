@@ -57,7 +57,7 @@ const LoginForm = () => {
           />
           <button
             type="submit"
-            className="btn secondary"
+            className="btn third"
             style={{ width: "40rem", padding: "1.2rem 0", fontWeight: "700" }}
             disabled={!formik.isValid}
           >
