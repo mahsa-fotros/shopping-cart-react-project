@@ -2,10 +2,10 @@ import { useFormik } from "formik";
 import Input from "../../common/Input";
 import * as Yup from "yup";
 import "./signup.css";
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate, useSearchParams } from "react-router-dom";
 import { signupUser } from "../../services/signupService";
-import { useState } from "react";
-import { useAuthActions } from "../../Context/AuthProvider";
+import { useEffect, useState } from "react";
+import { useAuth, useAuthActions } from "../../Context/AuthProvider";
 
 const initialValues = {
   name: "",
@@ -40,8 +40,17 @@ const validationSchema = Yup.object({
 const SignupForm = () => {
   const navigate= useNavigate();
   const setAuth= useAuthActions();
-  
+  const auth = useAuth();
+  let [searchParams, setSearchParams] = useSearchParams();
+  const redirect =  searchParams.get("redirect") || "/";
+  const updateRedirect = redirect.includes("/") ? redirect : "/" + redirect;
+
   const [error,setError] = useState(null);
+
+  useEffect(()=>{
+    if(auth) navigate(updateRedirect)
+  },[redirect,auth])
+
   const onSubmit =async (values)=>{
     // console.log(values);
       const {name, email,phoneNumber, password} =values;
@@ -56,7 +65,7 @@ const SignupForm = () => {
         setAuth(data);
         localStorage.setItem("authState", JSON.stringify(data));
         setError(null);
-        navigate("/");
+        navigate(updateRedirect);
       } catch (error) {
         if(error.response && error.response.data.message)
           setError(error.response.data.message);
@@ -118,7 +127,7 @@ const SignupForm = () => {
           {error && (
             <p style={{ color: "red", marginBottom: "1rem" }}>{error}</p>
           )}
-          <Link to="/login">
+          <Link to={`/login?redirect=${redirect}`}>
             <p style={{ fontSize: "1.6rem" }}>Already sign up?</p>
           </Link>
         </form>

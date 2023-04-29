@@ -3,10 +3,12 @@ import { useCart, useCartActions } from "../Context/CartProvider";
 import "./cartPage.css";
 import { BiTrash, BiMinus, BiPlus } from "react-icons/bi";
 import Layout from "../Layout/Layout";
+import { useAuth } from "../Context/AuthProvider";
 
 const CartPage = () => {
   const { cart, total } = useCart();
   const dispatch = useCartActions();
+  
   if (!cart.length) {
     return (
       <Layout>
@@ -84,7 +86,7 @@ const CartSummary = ({cart, total})=>{
         </p>
         <p>${total}</p>
       </div>
-      <Link to="/checkout">
+      <Link to="/login?redirect=checkout">
       <button className="btn secondary" style={{width:"100%"}}>Proceed to checkout</button>
       </Link>
     </section>

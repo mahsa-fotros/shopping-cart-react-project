@@ -2,10 +2,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Input from "../../common/Input";
 import "./Login.css"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { loginUser } from "../../services/loginService";
-import { useState } from "react";
-import { useAuthActions } from "../../Context/AuthProvider";
+import { useEffect, useState } from "react";
+import { useAuth, useAuthActions } from "../../Context/AuthProvider";
+
 
 const initialValues={
     email:"",
@@ -23,6 +24,14 @@ const LoginForm = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const setAuth= useAuthActions();
+  const auth = useAuth();
+  let [searchParams, setSearchParams] = useSearchParams();
+  const redirect = searchParams.get("redirect") || "/";
+  const updateRedirect= (redirect.includes("/") ? redirect : "/"+redirect);
+  
+  useEffect(()=>{
+    if(auth) navigate(updateRedirect)
+  },[redirect,auth])
 
     const onSubmit=async (values)=>{
         // console.log(values);
@@ -31,7 +40,7 @@ const LoginForm = () => {
           setAuth(data);
           localStorage.setItem("authState", JSON.stringify(data));
           setError(null);
-          navigate("/");
+          navigate(updateRedirect);
         } catch (error) {
           console.log(error);
           if (error.response && error.response.data.message)
@@ -67,9 +76,13 @@ const LoginForm = () => {
             Sign in
           </button>
           {error && (
-            <p style={{ color: "red", marginBottom: "1rem", "fontSize":"1.4rem" }}>{error}</p>
+            <p
+              style={{ color: "red", marginBottom: "1rem", fontSize: "1.4rem" }}
+            >
+              {error}
+            </p>
           )}
-          <Link to="/signup">
+          <Link to={`/signup?redirect=${redirect}`}>
             <p style={{ fontSize: "1.6rem" }}>Not sign up yet?</p>
           </Link>
         </form>
