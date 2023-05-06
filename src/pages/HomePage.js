@@ -9,7 +9,7 @@ const HomePage = () => {
   const {cart} = useCart();
  const dispatch = useCartActions();
   const addProductHandler=(product)=>{
-    toast.success(`${product.name} is added to cart !`)
+    toast.success(`${product.name} is added to cart !`, { autoClose: 1500 });
     dispatch({type:"ADD_TO_CART",payload:product});
   }
   return (

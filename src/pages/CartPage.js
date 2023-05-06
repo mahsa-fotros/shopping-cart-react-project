@@ -3,7 +3,7 @@ import { useCart, useCartActions } from "../Context/CartProvider";
 import "./cartPage.css";
 import { BiTrash, BiMinus, BiPlus } from "react-icons/bi";
 import Layout from "../Layout/Layout";
-import { useAuth } from "../Context/AuthProvider";
+
 
 const CartPage = () => {
   const { cart, total } = useCart();

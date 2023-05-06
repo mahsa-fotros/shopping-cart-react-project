@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding-top: 3rem;
 }
 .cartCenter {
   max-width: 1170px;
@@ -16,9 +17,6 @@
   justify-content: space-around;
   align-items: center;
   width: 60%;
-}
-.emptyCart h2 {
-  padding-top: 3rem;
 }
 .cartItemList {
   display: flex;
@@ -44,7 +42,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
 }
 .cartItemImage img {
   width: 100%;

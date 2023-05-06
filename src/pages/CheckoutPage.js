@@ -1,5 +1,10 @@
+import Checkout from "../components/Checkout/Checkout";
+
+
 const CheckoutPage = () => {
-    return ( <div>Checkout page!</div> );
+    return ( 
+       <Checkout />
+    );
 }
  
 export default CheckoutPage;
