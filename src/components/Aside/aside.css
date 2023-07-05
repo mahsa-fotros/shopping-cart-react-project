@@ -1,0 +1,24 @@
+.sidebar__card {
+  padding: 2rem;
+  border: 1px solid var(--borderColor);
+  border-radius: 20px;
+  background-color: var(--mainWhite);
+  margin-top: 5rem;
+}
+.category__items h4{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.7rem;
+}
+.category__items li{
+  margin: 1rem 0;
+  font-weight: bold;
+}
+.categoryLinks:hover{
+  color: var(--secondaryColor);
+}
+.categoryLinks:focus{
+  color: var(--secondaryColor);
+}
+.selectedLink{
+  color: var(--secondaryColor)
+}
