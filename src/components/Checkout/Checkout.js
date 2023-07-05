@@ -38,26 +38,26 @@ if(!cart.length) return (
           <h4>Your bill</h4>
           <div className="billItem">
             <p>Total price</p>
-            <p>${originalTotalPrice}</p>
+            <p>${Number(originalTotalPrice).toFixed(2)}</p>
           </div>
           <div className="billItem">
             <p>Shipping cost</p>
-            <p>${total * 0.01}</p>
+            <p>${Number(total * 0.01).toFixed(2)}</p>
           </div>
           <div className="billItem">
             <p>Your profit</p>
-            <p>${originalTotalPrice - total}</p>
+            <p>${Math.round(originalTotalPrice - total)}</p>
           </div>
           <div className="billItem">
             <p>
               Subtotal ({cart.reduce((acc, curr) => acc + curr.quantity, 0)}{" "}
               items)
             </p>
-            <p>${total}</p>
+            <p>${Number(total + total * 0.01).toFixed(2)}</p>
           </div>
-            <button className="btn third" style={{ width: "100%" }}>
-              Pay off
-            </button>
+          <button className="btn third" style={{ width: "100%" }}>
+            Pay off
+          </button>
         </section>
       </main>
     </Layout>

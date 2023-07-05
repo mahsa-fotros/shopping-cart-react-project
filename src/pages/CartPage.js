@@ -35,8 +35,8 @@ const CartPage = () => {
                   <div className="cartItemImage">
                     <img src={item.image} alt={item.name} />
                   </div>
-                  <h4>{item.name}</h4>
-                  <div>${item.offPrice * item.quantity}</div>
+                  <h4>{item.title.split(" ").slice(0, 2).join(" ")}</h4>
+                  <div>${Number((item.price * item.quantity).toFixed(2))}</div>
                   <div className="itemControl">
                     <button
                       onClick={() => decrementHandler(item)}
@@ -74,20 +74,22 @@ const CartSummary = ({cart, total})=>{
       <h4>Cart Summary</h4>
       <div className="summaryItem">
         <p>original total price</p>
-        <p>${originalTotalPrice}</p>
+        <p>${Number(originalTotalPrice).toFixed(2)}</p>
       </div>
       <div className="summaryItem">
         <p>discount</p>
-        <p>${originalTotalPrice - total}</p>
+        <p>${Math.round(originalTotalPrice - total)}</p>
       </div>
       <div className="summaryItem subtotal">
         <p>
           Subtotal ({cart.reduce((acc, curr) => acc + curr.quantity, 0)} items)
         </p>
-        <p>${total}</p>
+        <p>${Number(total).toFixed(2)}</p>
       </div>
       <Link to="/login?redirect=checkout">
-      <button className="btn secondary" style={{width:"100%"}}>Proceed to checkout</button>
+        <button className="btn secondary" style={{ width: "100%" }}>
+          Proceed to checkout
+        </button>
       </Link>
     </section>
   );

@@ -10,7 +10,7 @@ const cartReducer = (state,action) => {
                     updatedItem.quantity++;
                     updatedCart[index]= updatedItem;
                 }
-                return {...state, cart: updatedCart, total: state.total+action.payload.offPrice};
+                return {...state, cart: updatedCart, total: state.total+action.payload.price};
             }
             case "DECREMENT_PRODUCT":{
                 const updatedCart= [...state.cart];
@@ -21,7 +21,7 @@ const cartReducer = (state,action) => {
                     return {
                       ...state,
                       cart: filterdeCart,
-                      total: state.total - action.payload.offPrice,
+                      total: state.total - action.payload.price,
                     };
                 }else{
                     updatedItem.quantity--;
@@ -29,7 +29,7 @@ const cartReducer = (state,action) => {
                     return {
                       ...state,
                       cart: updatedCart,
-                      total: state.total - action.payload.offPrice,
+                      total: state.total - action.payload.price,
                     };
 
                 }

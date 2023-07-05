@@ -1,53 +1,56 @@
-import * as data from "../data";
 import "../App.css";
-import { useCart, useCartActions } from "../Context/CartProvider";
-import { checkInCart } from "../utils/checkInCart";
-import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import Layout from "../Layout/Layout";
 
 const HomePage = () => {
-  const {cart} = useCart();
- const dispatch = useCartActions();
-  const addProductHandler=(product)=>{
-    toast.success(`${product.name} is added to cart !`, { autoClose: 1500 });
-    dispatch({type:"ADD_TO_CART",payload:product});
-  }
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://fakestoreapi.com/products/categories")
+  //     .then((res) => setCategories(res.data));
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://fakestoreapi.com/products")
+  //     .then((res) => setProducts(res.data));
+  // }, []);
+  useEffect(() => {
+    Promise.all([
+      axios.get("https://fakestoreapi.com/products/categories"),
+      axios.get("https://fakestoreapi.com/products"),
+    ])
+      .then(([categoriesResponse, productsResponse]) => {
+        setCategories(categoriesResponse.data);
+        setProducts(productsResponse.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <Layout>
-      <main>
-        <section className="productList">
-          {data.products.map((product) => {
-            return (
-              <section className="product" key={product.id}>
+      <div className="productList categoryList">
+        {categories.map((category) => {
+          const product = products.filter((p) => p.category === category);
+          return (
+            <Link to={`/products/category/${category.split(" ").join("-")}`} key={categories.indexOf(category)}>
+              <div className="product">
                 <div className="productImage">
-                  <img src={product.image} alt={product.name} />
+                  <img src={product[2].image} alt={product[2].title} />
                 </div>
-                <div className="productDesc">
-                  <div>{product.name}</div>
-                  <div className="productPrice">
-                    <p>${product.offPrice}</p>
-                    <p className="originalPrice">
-                      {product.discount > 0 ? <>List: ${product.price}</> : ""}
-                    </p>
-                  </div>
-                </div>
-                <div className="buttonContainer">
-                  <button
-                    onClick={() => addProductHandler(product)}
-                    className={`btn primary ${
-                      checkInCart(cart, product) && "third"
-                    }`}
-                  >
-                    {checkInCart(cart, product) ? "In Cart" : "Add to Cart"}
-                  </button>
-                </div>
-              </section>
-            );
-          })}
-        </section>
-      </main>
+                <div className="categoryName">{category}</div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
     </Layout>
   );
 };
+  export default HomePage;
 
-export default HomePage;
+  

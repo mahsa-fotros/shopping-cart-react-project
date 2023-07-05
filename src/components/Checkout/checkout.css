@@ -38,8 +38,10 @@
 .checkoutList{
     display: flex;
     justify-content: flex-start;
-    column-gap: 3rem;
+    gap: 4rem;
     margin-top: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
 }
 .checkoutItem{
     position: relative;
@@ -50,13 +52,13 @@
 }
 .itemImage img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 5px;
 }
 .itemQuantity{
     position: absolute;
     right: -14px;
-    top: 55px;
+    top: 75px;
     width: 25px;
     height: 25px;
     border-radius: 50%;
