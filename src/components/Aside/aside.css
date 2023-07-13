@@ -1,3 +1,7 @@
+.asideContainer{
+  position: sticky;
+  top: 0;
+}
 .sidebar__card {
   padding: 2rem;
   border: 1px solid var(--borderColor);
@@ -5,9 +9,10 @@
   background-color: var(--mainWhite);
   margin-top: 5rem;
 }
-.category__items h4{
+.card__title{
   border-bottom: 1px solid #ccc;
-  padding-bottom: 0.7rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 2rem;
 }
 .category__items li{
   margin: 1rem 0;
